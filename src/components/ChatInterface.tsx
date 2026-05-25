@@ -188,6 +188,8 @@ export const ChatInterface = ({ documentId, documentContent }: ChatInterfaceProp
                 ) : (
                   <p className="text-sm whitespace-pre-wrap">{msg.content}</p>
                 )}
+              </div>
+            </div>
           ))}
           <div ref={scrollRef} />
         </div>
