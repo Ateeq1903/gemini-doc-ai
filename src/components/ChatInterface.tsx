@@ -181,9 +181,13 @@ export const ChatInterface = ({ documentId, documentContent }: ChatInterfaceProp
                     : "bg-secondary text-secondary-foreground"
                 }`}
               >
-                <p className="text-sm whitespace-pre-wrap">{msg.content}</p>
-              </div>
-            </div>
+                {msg.role === "assistant" ? (
+                  <div className="text-sm prose prose-sm prose-invert max-w-none prose-p:my-2 prose-pre:bg-background/50 prose-pre:p-2 prose-pre:rounded prose-code:text-primary prose-headings:mt-3 prose-headings:mb-2 prose-ul:my-2 prose-ol:my-2 prose-a:text-primary">
+                    <ReactMarkdown remarkPlugins={[remarkGfm]}>{msg.content}</ReactMarkdown>
+                  </div>
+                ) : (
+                  <p className="text-sm whitespace-pre-wrap">{msg.content}</p>
+                )}
           ))}
           <div ref={scrollRef} />
         </div>
