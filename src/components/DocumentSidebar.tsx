@@ -34,9 +34,6 @@ export const DocumentSidebar = ({
   const { toast } = useToast();
 
   const extractTextFromPDF = async (file: File): Promise<string> => {
-    // Set the worker source for PDF.js
-    pdfjsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
-
     const arrayBuffer = await file.arrayBuffer();
     const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
     
